@@ -1,0 +1,19 @@
+model:
+  t1: 1.0
+  t2: 0.3
+  phi: 1.5707963
+  M: 2.5
+
+protocol:
+  type: fixed_ruler
+  C_target: 1
+  n_k: 20
+  boundary_offset: 0.1
+
+simulation:
+  t_span: [0.0, 30.0]
+  dt: 0.05
+
+output:
+  figures: outputs/figures
+  logs: outputs/logs

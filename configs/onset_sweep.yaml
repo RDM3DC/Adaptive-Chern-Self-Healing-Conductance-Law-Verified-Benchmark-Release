@@ -1,0 +1,24 @@
+model:
+  t1: 1.0
+  t2: 0.3
+  phi: 1.5707963
+
+protocol:
+  type: arp
+  C_target: 1
+  gain: 2.0
+  param: M
+  epsilon: 0.01
+  n_k: 20
+
+simulation:
+  t_span: [0.0, 30.0]
+  dt: 0.05
+
+output:
+  figures: outputs/figures
+  logs: outputs/logs
+
+sweep:
+  param: M
+  values: [1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0]
