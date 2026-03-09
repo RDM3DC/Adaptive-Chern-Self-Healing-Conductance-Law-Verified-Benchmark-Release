@@ -1,0 +1,22 @@
+model:
+  t1: 1.0
+  t2: 0.3
+  phi: 1.5707963
+  M: 2.5
+
+protocol:
+  type: no_topology
+  C_target: 1
+  gain: 2.0
+  param: M
+  epsilon: 0.01
+  n_k: 20
+  target_gap: 0.5
+
+simulation:
+  t_span: [0.0, 30.0]
+  dt: 0.05
+
+output:
+  figures: outputs/figures
+  logs: outputs/logs

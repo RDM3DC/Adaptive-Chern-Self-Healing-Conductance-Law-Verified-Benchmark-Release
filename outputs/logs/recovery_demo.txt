@@ -1,0 +1,2 @@
+recovery_time=0.5000
+mean_fidelity=0.9834
