@@ -1,0 +1,46 @@
+{
+  "overall": "PASS",
+  "units": "OK",
+  "theory": "PASS",
+  "details": [
+    {
+      "test": "units_consistency",
+      "passed": true,
+      "units": "OK",
+      "normalized_system": true,
+      "term_shapes_ok": true,
+      "finite_ok": true,
+      "bounded_increment_ok": true,
+      "max_abs_dt_dg": 0.04598128997068747,
+      "pi_a": 3.130279090602085,
+      "coherence": 1.0
+    },
+    {
+      "test": "theory_directional_response",
+      "passed": true,
+      "theory": "PASS",
+      "measurements": {
+        "chi_low": 0.6374401323959503,
+        "chi_high": 0.7162186541798636,
+        "alpha_low": 0.6375373864041285,
+        "alpha_high": 0.7390559622083054,
+        "damage_low": 0.637539711613711,
+        "damage_high": 0.6375605027627536,
+        "lambda_low": 0.7407289822483175,
+        "lambda_high": 0.6375608120231152
+      },
+      "inequalities": {
+        "chi_high_gt_chi_low": true,
+        "alpha_high_gt_alpha_low": true,
+        "damage_high_gt_damage_low": true,
+        "lambda_high_lt_lambda_low": true
+      },
+      "margins": {
+        "chi_margin": 0.07877852178391331,
+        "alpha_margin": 0.10151857580417689,
+        "damage_margin": 2.079114904252055e-05,
+        "lambda_margin": 0.1031681702252023
+      }
+    }
+  ]
+}
