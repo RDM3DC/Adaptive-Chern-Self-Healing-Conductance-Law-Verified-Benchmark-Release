@@ -7,6 +7,10 @@ A complete, scientifically rigorous Python package implementing the
 **Adaptive Recovery Protocol (ARP)** for topological self-healing of
 Hall conductance in 2-D lattice systems.
 
+This repository now includes a checked-in benchmark artifact bundle under
+`outputs/` with a manifest, hashed artifacts, solver-verification results,
+ablation summaries, onset sweeps, and rendered benchmark figures.
+
 ---
 
 ## Installation
@@ -36,6 +40,76 @@ proto = ARPProtocol(model, config={"C_target": 1, "gain": 2.0,
 result = proto.run(t_span=(0.0, 20.0))
 print("Final Chern number:", int(result["C"][-1]))  # 1
 ```
+
+---
+
+## Verified Output Bundle
+
+The repository includes a recorded benchmark bundle at `outputs/` with the
+following top-level artifacts:
+
+```text
+outputs/
+  manifest.json
+  matched_present/
+  onset_map/
+  recovery_demo/
+  solver_verification/
+```
+
+The current manifest records:
+
+- `overall = PASS`
+- `artifact_count = 16`
+- `git_hash = edc34448fea5c0f6dae28cd11cd5dde5d4941da2`
+- `timestamp = 2026-03-09T02:09:12.695459+00:00`
+
+### Solver Verification
+
+The attached solver-verification bundle at `outputs/solver_verification/verdict.json`
+passes all 5 checks:
+
+- Determinism
+- Current conservation
+- Phase-lift clipping
+- Solver cross-validation
+- Lattice symmetry
+
+Notable recorded values:
+
+- `tests_passed = 5 / 5`
+- `max_ratio_error = 0.0`
+- `coherence_range = [0.9999368491814438, 1.0000000000000002]`
+- `gmres_failures = 0`
+- `flux_Yeff_recovery_ratio = 44.21463450561277`
+- `row_symmetry_max_error = 0.004666194007826474`
+
+### Parameter Sweep Coverage
+
+The onset-map bundle at `outputs/onset_map/summary.json` records two grid sweeps:
+
+- `alpha0_vs_lambda_s`: `recovery_fraction = 0.4375`, `bf_range = [0.4117083925029834, 0.9415103910783635]`
+- `chi_vs_damage_scale`: `recovery_fraction = 0.59375`, `bf_range = [0.4232037621914788, 0.9909974792942029]`
+
+### Included Benchmark Artifacts
+
+The attached bundle includes:
+
+- `outputs/recovery_demo/recovery_traces.csv`
+- `outputs/recovery_demo/recovery_traces.png`
+- `outputs/recovery_demo/summary.json`
+- `outputs/recovery_demo/snapshot_healthy.png`
+- `outputs/recovery_demo/snapshot_damaged.png`
+- `outputs/recovery_demo/snapshot_recovered.png`
+- `outputs/matched_present/matched_present_summary.csv`
+- `outputs/matched_present/matched_present_summary.json`
+- `outputs/matched_present/matched_present_traces.png`
+- `outputs/onset_map/onset_alpha0_lambda_s.csv`
+- `outputs/onset_map/onset_alpha0_lambda_s.png`
+- `outputs/onset_map/onset_chi_damage_scale.csv`
+- `outputs/onset_map/onset_chi_damage_scale.png`
+- `outputs/onset_map/summary.json`
+- `outputs/solver_verification/verdict.json`
 
 ---
 
@@ -85,6 +159,22 @@ tests/             — pytest test suite
 outputs/           — Figures, tables, logs (auto-created)
 ```
 
+For the attached benchmark release bundle, the concrete checked-in output
+structure is:
+
+```text
+outputs/
+  figures/
+  logs/
+  tables/
+  videos/
+  manifest.json
+  matched_present/
+  onset_map/
+  recovery_demo/
+  solver_verification/
+```
+
 ---
 
 ## Benchmarks
@@ -110,6 +200,12 @@ python benchmarks/run_recovery_demo.py
 
 ```bash
 pytest tests/ -v
+```
+
+To inspect the checked-in release artifacts directly, start with:
+
+```bash
+python -c "import json, pathlib; print(json.loads(pathlib.Path('outputs/manifest.json').read_text())['overall'])"
 ```
 
 ---
